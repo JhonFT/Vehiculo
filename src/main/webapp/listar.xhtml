@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel>
+                <p:outputLabel value="placa" />
+                <p:inputText placeholder="placa.." value="#{listarBean.vehiculo.placa}"/>
+                <p:outputLabel value="modelo" />
+                <p:inputText placeholder="modelo.." value="#{listarBean.vehiculo.model}"/>
+                <p:commandButton value="Registrar"  action="#{listarBean.add()}" update="table"/>
+            </p:panel>
+            <p:panel id="table">
+                <p:dataTable var="car" value="#{listarBean.vehiculos}">
+                    <p:column headerText="placa">
+                        <h:outputText value="#{car.placa}" />
+                    </p:column>
+                    <p:column headerText="model">
+                        <h:outputText value="#{car.model}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
