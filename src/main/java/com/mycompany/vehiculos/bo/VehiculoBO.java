@@ -6,6 +6,8 @@
 package com.mycompany.vehiculos.bo;
 
 import com.mycompany.vehiculos.dao.VehiculoDAO;
+import com.mycompany.vehiculos.dto.Vehiculos;
+import java.util.List;
 
 /**
  *
@@ -18,6 +20,8 @@ public class VehiculoBO {
         dao = new VehiculoDAO();
     }
     
-    
+    public List<Vehiculos> getVehiculo(){
+        return  dao.getAll();
+    }
     
 }

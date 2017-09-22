@@ -5,41 +5,35 @@
  */
 package com.mycompany.vehiculos.bean;
 
+import com.mycompany.vehiculos.dto.Usuario;
 import javax.faces.bean.ManagedBean;
-
 
 /**
  *
  * @author Home
  */
-
 @ManagedBean
 public class LoginBean {
-    
-    private String user;
-    private String pass;
-    
-    public String authentication(){
-        if(user.toLowerCase().trim().equals("incca") 
-                && pass.toLowerCase().trim().equals("1234") ){
+
+    private Usuario user;
+
+    public LoginBean() {
+        user = new Usuario();
+    }
+
+    public String authentication() {
+        if (user.getUsername().toLowerCase().trim().equals("incca")
+                && user.getPass().toLowerCase().trim().equals("1234")) {
             return "listar";
         }
         return null;
     }
-    public String getUser() {
+
+    public Usuario getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(Usuario user) {
         this.user = user;
     }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-       
 }

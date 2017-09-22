@@ -10,7 +10,7 @@ package com.mycompany.vehiculos.dto;
  * @author Home
  */
 public class Vehiculos {
-
+    private Long codigo;
     private String placa;
     private String model;
 
@@ -28,5 +28,13 @@ public class Vehiculos {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 }

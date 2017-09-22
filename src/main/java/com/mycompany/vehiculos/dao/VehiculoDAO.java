@@ -8,7 +8,13 @@ package com.mycompany.vehiculos.dao;
 import com.mycompany.veehiculo.helper.ConnectionDB;
 import com.mycompany.vehiculos.dto.Vehiculos;
 import com.mycompany.vehiculos.interfaces.ImplementGenericInterfaces;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +23,7 @@ import java.util.List;
 public class VehiculoDAO implements ImplementGenericInterfaces<Vehiculos> {
 
     private static final String ADDSQL = "INSER INTO USUARIO(USU_,USU_)";
-    private static final String ALLSQL = "INSER INTO USUARIO(USU_,USU_)";
+    private static final String ALLSQL = "SELECT * FROM USUARIO";
     private static final String FINDSQL = "INSER INTO USUARIO(USU_,USU_)";
     ConnectionDB conn;
 
@@ -27,7 +33,22 @@ public class VehiculoDAO implements ImplementGenericInterfaces<Vehiculos> {
 
     @Override
     public List<Vehiculos> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Vehiculos> vehiculos = new ArrayList<>();
+        try {
+            Statement s =  conn.getConnetion().createStatement();
+            ResultSet r = s.executeQuery(ALLSQL);
+            while (r.next()) {                
+                Vehiculos v = new Vehiculos();
+                v.setCodigo(r.getLong("car_code"));
+                v.setModel(r.getString("car_modelo"));
+                v.setPlaca(r.getString("car_placa"));
+                vehiculos.add(v);
+            }
+            return  vehiculos;
+        } catch (SQLException ex) {
+            Logger.getLogger(VehiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return vehiculos;
+        }
     }
 
     @Override
