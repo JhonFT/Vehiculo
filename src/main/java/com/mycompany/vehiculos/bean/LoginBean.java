@@ -5,25 +5,34 @@
  */
 package com.mycompany.vehiculos.bean;
 
+import com.mycompany.vehiculos.bo.UsuarioBO;
 import com.mycompany.vehiculos.dto.Usuario;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Home
  */
 @ManagedBean
+@SessionScoped
 public class LoginBean {
 
     private Usuario user;
+    private FacesContext context;
+    private UsuarioBO uBO;
 
     public LoginBean() {
-        user = new Usuario();
+        this.context = FacesContext.getCurrentInstance();
+        this.user = new Usuario();
+        this.uBO = new UsuarioBO();
     }
 
     public String authentication() {
-        if (user.getUsername().toLowerCase().trim().equals("incca")
-                && user.getPass().toLowerCase().trim().equals("1234")) {
+        Usuario u = uBO.validUser(user);
+        if( u != null) {
+            this.context.getExternalContext().getSessionMap().put("user", u );
             return "listar";
         }
         return null;

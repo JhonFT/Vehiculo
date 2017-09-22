@@ -10,8 +10,17 @@ package com.mycompany.vehiculos.dto;
  * @author Home
  */
 public class Usuario {
+    private long code;
     private String username;
     private String pass;
+
+    public long getCode() {
+        return code;
+    }
+
+    public void setCode(long code) {
+        this.code = code;
+    }
 
     public String getUsername() {
         return username;

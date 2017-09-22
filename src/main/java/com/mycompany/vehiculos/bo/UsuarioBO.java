@@ -22,4 +22,8 @@ public class UsuarioBO {
     public boolean add(Usuario user){
         return dao.add(user);
     }
+    
+    public  Usuario validUser(Usuario u){
+        return dao.findUsuer(u);
+    }
 }
