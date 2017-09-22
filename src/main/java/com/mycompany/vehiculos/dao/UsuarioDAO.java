@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class UsuarioDAO implements ImplementGenericInterfaces<Usuario> {
 
     ConnectionDB conn;
-    private static final String ADDSQL = "INSER INTO USUARIO(USU_NICKNAME,USU_CLAVE) VALUES (?,?)";
+    private static final String ADDSQL = "INSERT INTO USUARIO(USU_NICKNAME,USU_CLAVE) VALUES (?,?)";
     private static final String ALLSQL = "SELECT * FROM USUARIO";
     private static final String LOGINSQL = "SELECT * FROM USUARIO WHERE USU_NICKNAME = ? AND USU_CLAVE = ? ";
 
@@ -35,7 +35,7 @@ public class UsuarioDAO implements ImplementGenericInterfaces<Usuario> {
         try {
             PreparedStatement ps = conn.getConnetion().prepareStatement(ADDSQL);
             ps.setString(1, user.getUsername());
-            ps.setString(2, user.getUsername());
+            ps.setString(2, user.getPass());
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

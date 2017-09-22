@@ -16,7 +16,6 @@ import javax.faces.context.FacesContext;
  * @author Home
  */
 @ManagedBean
-@SessionScoped
 public class LoginBean {
 
     private Usuario user;
@@ -24,7 +23,6 @@ public class LoginBean {
     private UsuarioBO uBO;
 
     public LoginBean() {
-        this.context = FacesContext.getCurrentInstance();
         this.user = new Usuario();
         this.uBO = new UsuarioBO();
     }
@@ -32,7 +30,6 @@ public class LoginBean {
     public String authentication() {
         Usuario u = uBO.validUser(user);
         if( u != null) {
-            this.context.getExternalContext().getSessionMap().put("user", u );
             return "listar";
         }
         return null;

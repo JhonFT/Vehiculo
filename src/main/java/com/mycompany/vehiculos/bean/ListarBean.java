@@ -18,7 +18,6 @@ import javax.faces.context.FacesContext;
  * @author Home
  */
 @ManagedBean
-@SessionScoped
 public class ListarBean {
 
     private Vehiculos vehiculo;
@@ -36,11 +35,11 @@ public class ListarBean {
 
     private void init() {
         vehiculos = vBO.getVehiculo();
-        user = (Usuario) this.context.getExternalContext().getSessionMap().get("user");
     }
 
     public void add() {
-        vehiculos.add(vehiculo);
+        vehiculos = vBO.add(vehiculo);
+
     }
 
     public Vehiculos getVehiculo() {

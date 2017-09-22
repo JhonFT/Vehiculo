@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class ConnectionDB {
 
-    private static final String HOST = "jdbc:postgresql://localhost:5432/register";
+    private static final String HOST = "jdbc:postgresql://localhost:5432/registro";
     private static final String USER = "jfonseca";
     private static final String PASS = "root";
     private Connection connection;

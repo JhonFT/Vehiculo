@@ -20,16 +20,17 @@ public class UsuarioBean {
     private UsuarioBO bo;
 
     public UsuarioBean() {
+        usuario = new Usuario();
         bo = new UsuarioBO();
     }
     
     
 
-    public void add() {
+    public String add() {
         if(bo.add(usuario)){
-            System.out.println("Insert");
+            return "index";
         }else{
-            System.out.println("Error");
+            return null;
         }
     }
 
